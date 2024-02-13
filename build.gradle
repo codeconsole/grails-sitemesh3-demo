@@ -15,6 +15,7 @@ group = "SiteMesh3Demo"
 repositories {
     mavenCentral()
     maven { url "https://repo.grails.org/grails/core/" }
+    maven { url "https://oss.sonatype.org/service/local/repositories/orgsitemesh-1027/content/" }
 }
 
 configurations {
@@ -27,19 +28,42 @@ configurations {
     }
 }
 
+boolean sitemesh3 = true
 dependencies {
+    if (sitemesh3) {
+        implementation("org.sitemesh:grails-plugin-sitemesh3:6.1.2")
+        implementation("org.grails:grails-plugin-interceptors") {
+            exclude group:'org.grails.plugins', module:'sitemesh2'
+            exclude group:'org.grails', module:'grails-web-sitemesh'
+        }
+        implementation("org.grails:grails-plugin-rest") {
+            exclude group:'org.grails', module:'grails-web-sitemesh'
+        }
+        implementation("org.grails:grails-plugin-url-mappings") {
+            exclude group:'org.grails', module:'grails-web-sitemesh'
+        }
+        implementation("org.grails.plugins:gsp") {
+            exclude group:'org.grails.plugins', module:'sitemesh2'
+            exclude group:'org.grails', module:'grails-web-sitemesh'
+        }
+        implementation("org.grails.plugins:scaffolding") {
+            exclude group:'org.grails.plugins', module:'sitemesh2'
+            exclude group:'org.grails', module:'grails-web-sitemesh'
+        }
+    } else {
+        implementation("org.grails:grails-plugin-interceptors")
+        implementation("org.grails:grails-plugin-rest")
+        implementation("org.grails:grails-plugin-url-mappings")
+        implementation("org.grails.plugins:gsp")
+        implementation("org.grails.plugins:scaffolding")
+    }
     implementation("org.grails:grails-core")
     implementation("org.grails:grails-logging")
     implementation("org.grails:grails-plugin-databinding")
     implementation("org.grails:grails-plugin-i18n")
-    implementation("org.grails:grails-plugin-interceptors")
-    implementation("org.grails:grails-plugin-rest")
     implementation("org.grails:grails-plugin-services")
-    implementation("org.grails:grails-plugin-url-mappings")
     implementation("org.grails:grails-web-boot")
-    implementation("org.grails.plugins:gsp")
     implementation("org.grails.plugins:hibernate5")
-    implementation("org.grails.plugins:scaffolding")
     implementation("org.hibernate:hibernate-core:5.6.15.Final")
     implementation("org.springframework.boot:spring-boot-autoconfigure")
     implementation("org.springframework.boot:spring-boot-starter")

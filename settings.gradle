@@ -13,4 +13,4 @@ pluginManagement {
     }
 }
 
-rootProject.name="SiteMesh3Demo"
+rootProject.name="grails-sitemesh3-demo"
