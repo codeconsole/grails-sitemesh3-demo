@@ -15,7 +15,6 @@ group = "SiteMesh3Demo"
 repositories {
     mavenCentral()
     maven { url "https://repo.grails.org/grails/core/" }
-    maven { url "https://oss.sonatype.org/service/local/repositories/orgsitemesh-1027/content/" }
 }
 
 configurations {
