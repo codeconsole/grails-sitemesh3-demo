@@ -1,4 +1,4 @@
-## Grails 6.0.0 Documentation
+## Grails 6.2.0 Documentation
 
 - [User Guide](https://docs.grails.org/6.2.0/guide/index.html)
 - [API Reference](https://docs.grails.org/6.2.0/api/index.html)
